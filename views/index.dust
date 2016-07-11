@@ -1,5 +1,52 @@
 {>"layout" /}
 
 {<body}
-  This is the index
+  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#formModal">Add Recipe</button>
+  <br>
+  {#recipes}
+      <div class="well">
+        <h4>{name} <button class="btn btn-default pull-right" data-toggle="collapse" href="#recipe_{id}" aria-expanded="false" aria-controls="recipe_{id}">View</button></h4>
+        <div class="collapse" id="recipe_{id}">
+          <br>
+          <br>
+          <p><strong>Ingredients: </strong>{ingredients}</p>
+          <p><strong>Directions: </strong>{directions}</p>
+          <br>
+          <hr>
+          <button class="btn btn-default edit-recipe">Edit</button>&nbsp;
+          <button class="btn btn-danger edit-recipe">Delete</button>
+        </div>
+      </div>
+  {/recipes}
+
+  <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form method="POST" action="/add">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Recipe</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Recipe Name</label>
+              <input type="text" class="form-control" name="name">
+            </div>
+            <div class="form-group">
+              <label>Ingredients</label>
+              <textarea class="form-control" name="ingredients"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Directions</label>
+              <textarea class="form-control" name="directions"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Save">
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
 {/body}
